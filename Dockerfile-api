@@ -1,0 +1,20 @@
+FROM guignol95/ai_apis:latest
+RUN mkdir -p /src
+
+WORKDIR /src
+
+ADD requirements.txt /src
+
+RUN pip3 install -r requirements.txt
+
+ADD app_utils.py /src
+
+ADD colorgram /src/colorgram
+
+ADD app.py /src
+
+EXPOSE 5000
+
+ENTRYPOINT ["python3"]
+
+CMD ["app.py"]
