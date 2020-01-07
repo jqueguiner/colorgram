@@ -50,14 +50,14 @@ def detect():
             if allowed_file(file.filename):
                 file.save(input_path)
             try:
-                nb_colors = request.form.getlist('nb_colors')[0]
+                nb_colors = int(request.form.getlist('nb_colors')[0])
             except:
                 nb_colors = 5
         else:
             url = request.json["url"]
             download(url, input_path)
 
-            nb_colors = request.json["nb_colors"]
+            nb_colors = int(request.json["nb_colors"])
 
        
         results = []
